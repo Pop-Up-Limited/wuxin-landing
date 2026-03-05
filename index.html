@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wuxin Smart Group - Engineering Excellence, Global Reach</title>
+  <meta name="description" content="Wuxin Smart Group is a leading engineering machinery conglomerate providing comprehensive solutions across tunnel construction, bridge engineering, mining, port logistics, and industrial building.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #0F2B4C;
+      --primary-mid: #163D66;
+      --accent: #E8842A;
+      --accent-hover: #d4741f;
+      --bg-white: #FFFFFF;
+      --bg-light: #F4F6F8;
+      --text-dark: #1A1A2E;
+      --text-gray: #5A6570;
+      --text-light: #8A95A0;
+      --nav-height: 80px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--nav-height);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+    .navbar.scrolled {
+      background: rgba(15, 43, 76, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+    .navbar .logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: #fff;
+    }
+    .navbar .logo-icon {
+      width: 42px; height: 42px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 18px; color: #fff;
+    }
+    .navbar .logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 20px; letter-spacing: 0.5px;
+    }
+    .navbar .logo-text span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      font-size: 14px; font-weight: 500; letter-spacing: 0.3px;
+      transition: color 0.2s; position: relative;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--accent);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .lang-switch {
+      color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500;
+      cursor: pointer; padding: 4px 12px; border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 4px; background: transparent; transition: all 0.2s;
+    }
+    .lang-switch:hover { border-color: #fff; color: #fff; }
+    .nav-search {
+      color: rgba(255,255,255,0.7); cursor: pointer;
+      transition: color 0.2s; background: none; border: none;
+    }
+    .nav-search:hover { color: #fff; }
+
+    /* Mobile menu */
+    .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .mobile-toggle span {
+      display: block; width: 24px; height: 2px; background: #fff;
+      margin: 5px 0; transition: all 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      overflow: hidden;
+    }
+    .hero-slide {
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity 1s ease;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero-slide img {
+      width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.05);
+      transition: transform 8s ease;
+    }
+    .hero-slide.active img { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(15,43,76,0.75) 0%, rgba(22,61,102,0.5) 100%);
+    }
+    .hero-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 0 120px;
+      z-index: 2;
+    }
+    .hero-tag {
+      display: inline-block;
+      padding: 6px 16px; margin-bottom: 20px;
+      background: rgba(232,132,42,0.15); border: 1px solid rgba(232,132,42,0.4);
+      border-radius: 20px;
+      color: var(--accent); font-size: 13px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.8s ease 0.3s;
+    }
+    .hero-slide.active .hero-tag { opacity: 1; transform: translateY(0); }
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(36px, 5vw, 64px); font-weight: 800;
+      color: #fff; line-height: 1.1; margin-bottom: 16px;
+      max-width: 700px;
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s ease 0.5s;
+    }
+    .hero-slide.active .hero-title { opacity: 1; transform: translateY(0); }
+    .hero-subtitle {
+      font-size: clamp(16px, 1.8vw, 20px); color: rgba(255,255,255,0.8);
+      max-width: 520px; margin-bottom: 36px; font-weight: 400;
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s ease 0.7s;
+    }
+    .hero-slide.active .hero-subtitle { opacity: 1; transform: translateY(0); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; border-radius: 6px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: all 0.3s; cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 4px 15px rgba(232,132,42,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 6px 20px rgba(232,132,42,0.4);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .btn-outline:hover {
+      border-color: #fff; background: rgba(255,255,255,0.1);
+    }
+    .hero-buttons {
+      display: flex; gap: 16px;
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s ease 0.9s;
+    }
+    .hero-slide.active .hero-buttons { opacity: 1; transform: translateY(0); }
+
+    /* Hero indicators */
+    .hero-indicators {
+      position: absolute; bottom: 100px; left: 120px; z-index: 3;
+      display: flex; gap: 12px;
+    }
+    .hero-indicator {
+      width: 40px; height: 3px; background: rgba(255,255,255,0.3);
+      border-radius: 2px; cursor: pointer; transition: all 0.3s;
+      border: none;
+    }
+    .hero-indicator.active {
+      width: 60px; background: var(--accent);
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      z-index: 3; display: flex; flex-direction: column; align-items: center;
+      color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 2px;
+    }
+    .scroll-hint .mouse {
+      width: 24px; height: 38px; border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 12px; position: relative; margin-bottom: 8px;
+    }
+    .scroll-hint .mouse::after {
+      content: ''; position: absolute;
+      top: 6px; left: 50%; transform: translateX(-50%);
+      width: 3px; height: 8px; background: rgba(255,255,255,0.6);
+      border-radius: 2px;
+      animation: scrollMouse 1.5s ease infinite;
+    }
+    @keyframes scrollMouse {
+      0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+    }
+
+    /* ===== ABOUT ===== */
+    .section { padding: 100px 60px; }
+    .section-tag {
+      display: inline-block; color: var(--accent);
+      font-size: 13px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 3vw, 42px); font-weight: 700;
+      color: var(--primary); line-height: 1.2; margin-bottom: 20px;
+    }
+    .section-subtitle {
+      font-size: 17px; color: var(--text-gray);
+      max-width: 600px; line-height: 1.7;
+    }
+
+    .about-section { background: var(--bg-white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      max-width: 1280px; margin: 0 auto;
+    }
+    .about-text p {
+      font-size: 16px; color: var(--text-gray); line-height: 1.8;
+      margin-top: 16px;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; margin-top: 40px;
+    }
+    .stat-card {
+      padding: 24px; background: var(--bg-light);
+      border-radius: 12px; border-left: 3px solid var(--accent);
+    }
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px; font-weight: 800; color: var(--primary);
+    }
+    .stat-number span { color: var(--accent); }
+    .stat-label {
+      font-size: 14px; color: var(--text-gray);
+      margin-top: 4px; font-weight: 500;
+    }
+    .about-image {
+      position: relative; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(15,43,76,0.15);
+    }
+    .about-image img {
+      width: 100%; height: 450px; object-fit: cover;
+      display: block;
+    }
+    .about-image-badge {
+      position: absolute; bottom: 24px; right: 24px;
+      background: var(--accent); color: #fff;
+      padding: 12px 20px; border-radius: 8px;
+      font-weight: 700; font-size: 14px;
+    }
+
+    /* ===== SOLUTIONS ===== */
+    .solutions-section { background: var(--bg-light); }
+    .solutions-header {
+      text-align: center; margin-bottom: 60px;
+      max-width: 700px; margin-left: auto; margin-right: auto;
+    }
+    .solutions-header .section-subtitle { margin: 0 auto; }
+    .solutions-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 20px; max-width: 1280px; margin: 0 auto;
+    }
+    .solution-card {
+      position: relative; border-radius: 16px; overflow: hidden;
+      height: 400px; cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .solution-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(15,43,76,0.2);
+    }
+    .solution-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .solution-card:hover img { transform: scale(1.08); }
+    .solution-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(15,43,76,0.9) 0%, rgba(15,43,76,0.2) 60%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 28px 24px;
+      transition: background 0.3s;
+    }
+    .solution-card:hover .solution-card-overlay {
+      background: linear-gradient(to top, rgba(15,43,76,0.95) 0%, rgba(15,43,76,0.4) 60%, rgba(15,43,76,0.1) 100%);
+    }
+    .solution-card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px; font-weight: 700; color: #fff;
+      margin-bottom: 8px;
+    }
+    .solution-card-desc {
+      font-size: 13px; color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s;
+      opacity: 0;
+    }
+    .solution-card:hover .solution-card-desc { max-height: 80px; opacity: 1; }
+    .solution-card-arrow {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--accent); font-size: 13px; font-weight: 600;
+      margin-top: 12px;
+      opacity: 0; transform: translateX(-10px);
+      transition: all 0.3s ease 0.1s;
+    }
+    .solution-card:hover .solution-card-arrow { opacity: 1; transform: translateX(0); }
+
+    /* ===== NEWS ===== */
+    .news-section { background: var(--bg-white); }
+    .news-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      max-width: 1280px; margin: 0 auto 50px;
+    }
+    .news-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 30px; max-width: 1280px; margin: 0 auto;
+    }
+    .news-card {
+      border-radius: 16px; overflow: hidden;
+      background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .news-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+    .news-card-image {
+      height: 220px; overflow: hidden;
+    }
+    .news-card-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .news-card:hover .news-card-image img { transform: scale(1.06); }
+    .news-card-body { padding: 24px; }
+    .news-card-date {
+      font-size: 13px; color: var(--accent); font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .news-card-title {
+      font-size: 18px; font-weight: 700; color: var(--primary);
+      margin-bottom: 10px; line-height: 1.4;
+    }
+    .news-card-excerpt {
+      font-size: 14px; color: var(--text-gray); line-height: 1.6;
+    }
+    .news-card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 16px; color: var(--accent);
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      transition: gap 0.3s;
+    }
+    .news-card-link:hover { gap: 10px; }
+
+    /* ===== GLOBAL MAP ===== */
+    .map-section {
+      background: var(--primary);
+      position: relative; overflow: hidden;
+    }
+    .map-content {
+      max-width: 1280px; margin: 0 auto;
+      text-align: center; position: relative; z-index: 1;
+    }
+    .map-content .section-tag { color: var(--accent); }
+    .map-content .section-title { color: #fff; }
+    .map-content .section-subtitle { color: rgba(255,255,255,0.7); margin: 0 auto 50px; }
+    .map-container {
+      position: relative; max-width: 1000px; margin: 0 auto;
+    }
+    .map-container svg {
+      width: 100%; height: auto; opacity: 0.25;
+    }
+    .map-stats {
+      display: flex; justify-content: center; gap: 60px; margin-top: 50px;
+    }
+    .map-stat { text-align: center; }
+    .map-stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 48px; font-weight: 800; color: var(--accent);
+    }
+    .map-stat-label {
+      font-size: 14px; color: rgba(255,255,255,0.6);
+      margin-top: 4px; font-weight: 500;
+    }
+    /* Map dots */
+    .map-dot {
+      position: absolute; width: 10px; height: 10px;
+      background: var(--accent); border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(232,132,42,0.3);
+      animation: mapPulse 2s ease infinite;
+    }
+    @keyframes mapPulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(232,132,42,0.3); }
+      50% { box-shadow: 0 0 0 8px rgba(232,132,42,0.1); }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #0a1f36; color: rgba(255,255,255,0.7);
+      padding: 80px 60px 30px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 60px; max-width: 1280px; margin: 0 auto;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: #fff; margin-bottom: 16px;
+    }
+    .footer-brand p {
+      font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5);
+      max-width: 300px;
+    }
+    .footer-social {
+      display: flex; gap: 12px; margin-top: 20px;
+    }
+    .footer-social a {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      transition: all 0.3s; font-size: 14px;
+    }
+    .footer-social a:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: rgba(232,132,42,0.1);
+    }
+    .footer-col h4 {
+      font-size: 15px; font-weight: 700; color: #fff;
+      margin-bottom: 20px; letter-spacing: 0.5px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a {
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      font-size: 14px; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-contact-item {
+      display: flex; gap: 10px; margin-bottom: 14px;
+      font-size: 14px; color: rgba(255,255,255,0.5);
+    }
+    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; }
+    .footer-bottom {
+      max-width: 1280px; margin: 0 auto;
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: rgba(255,255,255,0.3);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .solutions-grid { grid-template-columns: repeat(3, 1fr); }
+      .solution-card:nth-child(4), .solution-card:nth-child(5) {
+        grid-column: span 1;
+      }
+    }
+    @media (max-width: 1024px) {
+      .navbar { padding: 0 30px; }
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .hero-content { padding: 0 40px; }
+      .hero-indicators { left: 40px; }
+      .section { padding: 80px 30px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+      .solution-card { height: 320px; }
+      .solution-card-desc { max-height: 60px; opacity: 1; }
+      .solution-card-arrow { opacity: 1; transform: translateX(0); }
+      .news-grid { grid-template-columns: 1fr; gap: 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .map-stats { gap: 40px; flex-wrap: wrap; }
+    }
+    @media (max-width: 768px) {
+      .hero-content { padding: 0 24px; }
+      .hero-indicators { left: 24px; bottom: 80px; }
+      .section { padding: 60px 20px; }
+      .solutions-grid { grid-template-columns: 1fr; }
+      .solution-card { height: 280px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .map-stat-number { font-size: 36px; }
+      .news-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(15,43,76,0.98); backdrop-filter: blur(12px);
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center; gap: 24px;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a {
+      color: #fff; text-decoration: none; font-size: 22px; font-weight: 600;
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--accent); }
+    .mobile-nav-close {
+      position: absolute; top: 24px; right: 30px;
+      background: none; border: none; color: #fff;
+      font-size: 32px; cursor: pointer;
+    }
+
+    /* Utility */
+    .lazy-img {
+      opacity: 0; transition: opacity 0.5s;
+    }
+    .lazy-img.loaded { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="logo">
+      <div class="logo-icon">WX</div>
+      <div class="logo-text">WUXIN <span>GROUP</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#global">Global Network</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-switch">EN / &#20013;</button>
+      <button class="nav-search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="mobile-toggle" onclick="document.querySelector('.mobile-nav').classList.add('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" onclick="this.parentElement.classList.remove('open')">&times;</button>
+    <a href="#hero" onclick="this.parentElement.classList.remove('open')">Home</a>
+    <a href="#solutions" onclick="this.parentElement.classList.remove('open')">Solutions</a>
+    <a href="#about" onclick="this.parentElement.classList.remove('open')">About</a>
+    <a href="#news" onclick="this.parentElement.classList.remove('open')">News</a>
+    <a href="#global" onclick="this.parentElement.classList.remove('open')">Global Network</a>
+    <a href="#contact" onclick="this.parentElement.classList.remove('open')">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-slide active">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80" alt="Construction site" loading="eager">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tag">World-Class Engineering Solutions</div>
+        <h1 class="hero-title">Engineering Excellence,<br>Global Reach</h1>
+        <p class="hero-subtitle">Building the infrastructure of tomorrow with intelligent machinery and integrated construction solutions.</p>
+        <div class="hero-buttons">
+          <a href="#solutions" class="btn btn-primary">Explore Solutions <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#about" class="btn btn-outline">About Wuxin</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1920&q=80" alt="Tunnel construction" loading="lazy">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tag">Tunnel Construction Equipment</div>
+        <h1 class="hero-title">Full-Process Tunnel<br>Construction Solutions</h1>
+        <p class="hero-subtitle">From drill-and-blast to TBM tunneling, providing complete equipment systems for underground construction.</p>
+        <div class="hero-buttons">
+          <a href="#solutions" class="btn btn-primary">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=1920&q=80" alt="Port crane" loading="lazy">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tag">Smart Port Solutions</div>
+        <h1 class="hero-title">Intelligent Crane Systems<br>for Modern Ports</h1>
+        <p class="hero-subtitle">Advanced material handling and logistics solutions powering the world's busiest ports.</p>
+        <div class="hero-buttons">
+          <a href="#solutions" class="btn btn-primary">Discover <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-indicators">
+      <button class="hero-indicator active" data-slide="0"></button>
+      <button class="hero-indicator" data-slide="1"></button>
+      <button class="hero-indicator" data-slide="2"></button>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="mouse"></div>
+      SCROLL
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about-section" id="about">
+    <div class="about-grid">
+      <div class="about-text" data-aos="fade-right">
+        <div class="section-tag">About Wuxin</div>
+        <h2 class="section-title">A Leading Engineering<br>Machinery Conglomerate</h2>
+        <p>Wuxin Smart Group is a leading engineering machinery conglomerate, providing comprehensive solutions across tunnel construction, bridge engineering, mining, port logistics, and industrial building sectors. With over two decades of innovation, we deliver intelligent equipment and full-process solutions to infrastructure projects worldwide.</p>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number"><span class="count-up" data-target="20">0</span><span>+</span></div>
+            <div class="stat-label">Years of Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number"><span class="count-up" data-target="5">0</span></div>
+            <div class="stat-label">Business Divisions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number"><span class="count-up" data-target="50">0</span><span>+</span></div>
+            <div class="stat-label">Countries Served</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number"><span class="count-up" data-target="1000">0</span><span>+</span></div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image" data-aos="fade-left">
+        <img class="lazy-img" data-src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" alt="Engineering project" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect fill='%23e8e8e8' width='800' height='450'/%3E%3C/svg%3E">
+        <div class="about-image-badge">Since 2003</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section class="section solutions-section" id="solutions">
+    <div class="solutions-header" data-aos="fade-up">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Industry Solutions</h2>
+      <p class="section-subtitle">Comprehensive engineering solutions across five core sectors, powered by intelligent machinery and decades of expertise.</p>
+    </div>
+    <div class="solutions-grid">
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="0">
+        <img class="lazy-img" data-src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80" alt="Transportation Infrastructure" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23ddd' width='600' height='400'/%3E%3C/svg%3E">
+        <div class="solution-card-overlay">
+          <div class="solution-card-title">Transportation Infrastructure</div>
+          <div class="solution-card-desc">Tunnel boring, bridge construction, and highway engineering with full-process equipment solutions.</div>
+          <div class="solution-card-arrow">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="100">
+        <img class="lazy-img" data-src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80" alt="Energy Infrastructure" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23ddd' width='600' height='400'/%3E%3C/svg%3E">
+        <div class="solution-card-overlay">
+          <div class="solution-card-title">Energy Infrastructure</div>
+          <div class="solution-card-desc">Pumped-storage power stations and energy tunnel solutions for sustainable infrastructure.</div>
+          <div class="solution-card-arrow">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="200">
+        <img class="lazy-img" data-src="https://images.unsplash.com/photo-1578319439584-104c94d37305?w=600&q=80" alt="Mining" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23ddd' width='600' height='400'/%3E%3C/svg%3E">
+        <div class="solution-card-overlay">
+          <div class="solution-card-title">Mining</div>
+          <div class="solution-card-desc">Full-process mining solutions with smart equipment for safe and efficient operations.</div>
+          <div class="solution-card-arrow">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="300">
+        <img class="lazy-img" data-src="https://images.unsplash.com/photo-1494412574643-ff11b0a5eb19?w=600&q=80" alt="Port & Logistics" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23ddd' width='600' height='400'/%3E%3C/svg%3E">
+        <div class="solution-card-overlay">
+          <div class="solution-card-title">Port & Logistics</div>
+          <div class="solution-card-desc">Intelligent cranes and material handling systems for modern port operations.</div>
+          <div class="solution-card-arrow">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="400">
+        <img class="lazy-img" data-src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Industrial Building" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23ddd' width='600' height='400'/%3E%3C/svg%3E">
+        <div class="solution-card-overlay">
+          <div class="solution-card-title">Industrial Building</div>
+          <div class="solution-card-desc">Scaffolding systems and formwork solutions for construction efficiency.</div>
+          <div class="solution-card-arrow">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="section news-section" id="news">
+    <div class="news-header">
+      <div>
+        <div class="section-tag" data-aos="fade-right">Latest Updates</div>
+        <h2 class="section-title" data-aos="fade-right">News & Events</h2>
+      </div>
+      <a href="#" class="btn btn-primary" data-aos="fade-left" style="flex-shrink:0">View All News <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="news-grid">
+      <div class="news-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="news-card-image">
+          <img class="lazy-img" data-src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80" alt="Bauma 2025" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='220'%3E%3Crect fill='%23e8e8e8' width='800' height='220'/%3E%3C/svg%3E">
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-date">March 2025</div>
+          <h3 class="news-card-title">Wuxin Showcases at Bauma 2025</h3>
+          <p class="news-card-excerpt">Wuxin Smart Group presented its latest intelligent tunnel construction equipment and smart mining solutions at the world's leading trade fair for construction machinery.</p>
+          <a href="#" class="news-card-link">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="news-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="news-card-image">
+          <img class="lazy-img" data-src="https://images.unsplash.com/photo-1580901368919-7738efb0f228?w=800&q=80" alt="Smart Tunnel Equipment" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='220'%3E%3Crect fill='%23e8e8e8' width='800' height='220'/%3E%3C/svg%3E">
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-date">February 2025</div>
+          <h3 class="news-card-title">New Smart Tunnel Equipment Launched</h3>
+          <p class="news-card-excerpt">The latest generation of intelligent lining trolleys and waterproof membrane installation systems brings unprecedented automation to tunnel construction.</p>
+          <a href="#" class="news-card-link">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="news-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="news-card-image">
+          <img class="lazy-img" data-src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80" alt="Southeast Asia Expansion" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='220'%3E%3Crect fill='%23e8e8e8' width='800' height='220'/%3E%3C/svg%3E">
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-date">January 2025</div>
+          <h3 class="news-card-title">Wuxin Expands Operations to Southeast Asia</h3>
+          <p class="news-card-excerpt">Establishing new service centers in Vietnam and Indonesia to support growing infrastructure development across the ASEAN region.</p>
+          <a href="#" class="news-card-link">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOBAL MAP -->
+  <section class="section map-section" id="global">
+    <div class="map-content">
+      <div class="section-tag" data-aos="fade-up">Worldwide Coverage</div>
+      <h2 class="section-title" data-aos="fade-up">Global Presence, Local Expertise</h2>
+      <p class="section-subtitle" data-aos="fade-up">Serving customers across 50+ countries with dedicated support teams and regional service centers.</p>
+
+      <div class="map-container" data-aos="fade-up" data-aos-delay="200">
+        <!-- Simplified world map SVG -->
+        <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+          <path d="M150,120 L180,100 L220,105 L250,95 L280,100 L300,110 L310,130 L320,150 L310,170 L300,190 L280,200 L260,210 L240,230 L230,260 L220,290 L200,310 L180,300 L170,280 L160,250 L155,220 L150,190 L145,160 L150,120Z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+          <path d="M300,110 L330,100 L360,95 L390,100 L400,90 L420,85 L450,80 L470,75 L490,80 L500,90 L510,85 L530,80 L550,85 L560,95 L570,100 L580,95 L590,90 L600,95 L610,105 L600,115 L590,120 L580,130 L570,140 L560,150 L540,160 L520,165 L500,170 L480,175 L460,180 L440,185 L430,195 L420,210 L410,230 L400,250 L390,240 L380,220 L370,200 L360,185 L350,170 L340,155 L330,140 L320,130 L310,120 L300,110Z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+          <path d="M430,195 L450,185 L470,180 L490,175 L510,172 L530,170 L550,168 L570,165 L590,160 L600,155 L610,150 L620,145 L640,140 L660,145 L680,150 L700,155 L720,160 L730,170 L740,180 L730,195 L720,210 L710,225 L700,240 L690,255 L680,270 L670,280 L660,290 L640,300 L620,305 L600,310 L580,305 L560,295 L540,280 L520,265 L500,250 L480,240 L460,230 L450,220 L440,210 L430,195Z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+          <path d="M770,160 L790,155 L810,160 L830,170 L850,180 L860,200 L870,220 L860,240 L850,260 L830,280 L810,290 L790,295 L770,290 L760,270 L755,250 L760,230 L765,210 L770,190 L770,160Z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+          <path d="M410,310 L430,305 L450,310 L470,320 L490,335 L510,350 L520,370 L510,390 L490,400 L470,405 L450,400 L430,390 L420,370 L415,350 L410,330 L410,310Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+        </svg>
+        <!-- Map dots for service locations -->
+        <div class="map-dot" style="top:28%;left:49%" title="China HQ"></div>
+        <div class="map-dot" style="top:25%;left:45%" title="Middle East"></div>
+        <div class="map-dot" style="top:35%;left:53%" title="Southeast Asia"></div>
+        <div class="map-dot" style="top:22%;left:30%" title="Europe"></div>
+        <div class="map-dot" style="top:30%;left:18%" title="South America"></div>
+        <div class="map-dot" style="top:18%;left:22%" title="North America"></div>
+        <div class="map-dot" style="top:55%;left:42%" title="Africa"></div>
+        <div class="map-dot" style="top:38%;left:58%" title="Australia" animation-delay="0.5s"></div>
+      </div>
+
+      <div class="map-stats" data-aos="fade-up" data-aos-delay="300">
+        <div class="map-stat">
+          <div class="map-stat-number"><span class="count-up" data-target="50">0</span>+</div>
+          <div class="map-stat-label">Countries Served</div>
+        </div>
+        <div class="map-stat">
+          <div class="map-stat-number"><span class="count-up" data-target="15">0</span>+</div>
+          <div class="map-stat-label">Service Centers</div>
+        </div>
+        <div class="map-stat">
+          <div class="map-stat-number"><span class="count-up" data-target="200">0</span>+</div>
+          <div class="map-stat-label">Field Engineers</div>
+        </div>
+        <div class="map-stat">
+          <div class="map-stat-number">24/7</div>
+          <div class="map-stat-label">Technical Support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon" style="width:36px;height:36px;font-size:15px;">WX</div>
+          <div class="logo-text" style="font-size:18px;">WUXIN <span style="color:var(--accent)">GROUP</span></div>
+        </a>
+        <p>A leading engineering machinery conglomerate providing intelligent solutions for global infrastructure development.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter">X</a>
+          <a href="#" aria-label="YouTube">YT</a>
+          <a href="#" aria-label="WeChat">W</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#">Transportation Infrastructure</a></li>
+          <li><a href="#">Energy Infrastructure</a></li>
+          <li><a href="#">Mining</a></li>
+          <li><a href="#">Port & Logistics</a></li>
+          <li><a href="#">Industrial Building</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">News & Events</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Loudi, Hunan Province, China</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>+86 738 8888 888</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>info@wuxingroup.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Wuxin Smart Group. All rights reserved.</span>
+      <span>Privacy Policy &middot; Terms of Use &middot; Sitemap</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // AOS Init
+    AOS.init({ duration: 800, once: true, offset: 80 });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Hero slider
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.hero-indicator');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      indicators[currentSlide].classList.remove('active');
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+      indicators[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      goToSlide((currentSlide + 1) % slides.length);
+    }
+
+    function startSlider() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    indicators.forEach(ind => {
+      ind.addEventListener('click', () => {
+        clearInterval(slideInterval);
+        goToSlide(parseInt(ind.dataset.slide));
+        startSlider();
+      });
+    });
+
+    startSlider();
+
+    // Count-up animation
+    const countEls = document.querySelectorAll('.count-up');
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          const duration = 2000;
+          const start = performance.now();
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.floor(eased * target);
+            if (progress < 1) requestAnimationFrame(update);
+            else el.textContent = target;
+          }
+          requestAnimationFrame(update);
+          countObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    countEls.forEach(el => countObserver.observe(el));
+
+    // Lazy loading images
+    const lazyImgs = document.querySelectorAll('.lazy-img');
+    const imgObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.onload = () => img.classList.add('loaded');
+          }
+          imgObserver.unobserve(img);
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    lazyImgs.forEach(img => imgObserver.observe(img));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
