@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wuxin Smart Group | Engineering Excellence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0F2B4C;
+  --copper: #C46A2C;
+  --charcoal: #2D3436;
+  --muted: #95A5A6;
+  --light-bg: #f8f9fa;
+  --white: #fff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--charcoal);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ─── NAVBAR ─── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 24px 0;
+  transition: background .3s, padding .3s, box-shadow .3s;
+}
+
+.navbar.scrolled {
+  background: rgba(255,255,255,0.97);
+  padding: 16px 0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  backdrop-filter: blur(12px);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--navy);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.nav-logo span { color: var(--copper); }
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--charcoal);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: color .3s;
+}
+
+.nav-links a:hover { color: var(--copper); }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--navy);
+  transition: .3s;
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-text { padding: 60px 0; }
+
+.hero-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 32px;
+}
+
+.hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 76px;
+  line-height: 0.95;
+  color: var(--navy);
+  letter-spacing: -3px;
+  margin-bottom: 32px;
+}
+
+.hero-desc {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 420px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+  font-weight: 400;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--navy);
+  color: #fff;
+  padding: 16px 36px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background .3s;
+}
+
+.btn-primary:hover { background: var(--copper); }
+
+.btn-primary svg {
+  width: 16px;
+  height: 16px;
+  transition: transform .3s;
+}
+
+.btn-primary:hover svg { transform: translateX(4px); }
+
+.hero-image {
+  height: 85vh;
+  min-height: 600px;
+  border-radius: 0 0 0 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── STATS ─── */
+.stats {
+  padding: 100px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.stats .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: #e0e0e0;
+}
+
+.stat-number {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 52px;
+  color: var(--navy);
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.stat-number .suffix {
+  font-size: 32px;
+  color: var(--copper);
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+/* ─── ABOUT ─── */
+.about {
+  padding: 160px 0 0;
+  position: relative;
+}
+
+.about-image-wrap {
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-card {
+  position: absolute;
+  bottom: -60px;
+  right: 80px;
+  background: var(--white);
+  padding: 56px 48px;
+  max-width: 540px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+.about-card h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--navy);
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.about-card p {
+  font-size: 15px;
+  color: var(--charcoal);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.about-card p.muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ─── SOLUTIONS ─── */
+.solutions {
+  padding: 200px 0 140px;
+}
+
+.section-header {
+  margin-bottom: 80px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 52px;
+  color: var(--navy);
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+
+.solution-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.solution-row:nth-child(even) .solution-image { order: 2; }
+.solution-row:nth-child(even) .solution-content { order: 1; }
+
+.solution-image {
+  height: 440px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.solution-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.solution-row:hover .solution-image img { transform: scale(1.03); }
+
+.solution-content { padding: 20px 0; }
+
+.solution-number {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--copper);
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.solution-content h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  color: var(--navy);
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  line-height: 1.15;
+}
+
+.solution-content p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 420px;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--copper);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: gap .3s;
+}
+
+.link-arrow:hover { gap: 16px; }
+
+.link-arrow svg { width: 18px; height: 18px; }
+
+/* ─── PRODUCTS ─── */
+.products {
+  padding: 140px 0;
+  background: var(--light-bg);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 80px;
+}
+
+.product-card {
+  background: var(--white);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  overflow: hidden;
+  transition: transform .4s, box-shadow .4s;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+}
+
+.product-card-image {
+  height: 260px;
+  overflow: hidden;
+}
+
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s;
+}
+
+.product-card:hover .product-card-image img { transform: scale(1.05); }
+
+.product-card-label {
+  padding: 24px 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--navy);
+  letter-spacing: -0.3px;
+}
+
+/* ─── NEWS ─── */
+.news {
+  padding: 140px 0;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 32px;
+  margin-top: 80px;
+}
+
+.news-featured {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 520px;
+  cursor: pointer;
+}
+
+.news-featured img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s;
+}
+
+.news-featured:hover img { transform: scale(1.03); }
+
+.news-featured-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 48px 40px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.75));
+}
+
+.news-date {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 12px;
+}
+
+.news-featured-overlay h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.news-stack { display: flex; flex-direction: column; gap: 32px; }
+
+.news-item {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 12px;
+  transition: background .3s;
+}
+
+.news-item:hover { background: var(--light-bg); }
+
+.news-item-image {
+  width: 200px;
+  min-height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.news-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.news-item-content h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+
+.news-item-content p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ─── GLOBAL ─── */
+.global {
+  padding: 140px 0;
+  background: var(--light-bg);
+  text-align: center;
+}
+
+.global .section-header { text-align: center; }
+
+.world-map {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  opacity: 0.5;
+}
+
+.global-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.global-stat h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 40px;
+  color: var(--navy);
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.global-stat p {
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  padding: 40px 0;
+  border-top: 1px solid #eee;
+}
+
+.footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.footer-logo span { color: var(--copper); }
+
+.footer-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .3s;
+}
+
+.footer-links a:hover { color: var(--charcoal); }
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .hero-title { font-size: 56px; }
+  .section-title { font-size: 40px; }
+  .stat-number { font-size: 40px; }
+  .solution-row { gap: 40px; }
+  .solution-content h3 { font-size: 28px; }
+  .about-card { right: 40px; padding: 40px 36px; }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: #fff;
+    padding: 24px;
+    gap: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+
+  .hero .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-title { font-size: 48px; }
+  .hero-image { height: 50vh; min-height: 300px; border-radius: 0 0 0 40px; }
+
+  .stats .container { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .stat-item:not(:last-child)::after { display: none; }
+  .stat-number { font-size: 36px; }
+
+  .about-image-wrap { height: 400px; }
+  .about-card {
+    position: relative;
+    bottom: auto; right: auto;
+    margin: -40px 24px 0;
+    max-width: 100%;
+  }
+
+  .solutions { padding: 120px 0 80px; }
+  .solution-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+  .solution-row:nth-child(even) .solution-image { order: 0; }
+  .solution-row:nth-child(even) .solution-content { order: 0; }
+  .solution-image { height: 300px; }
+
+  .products-grid { grid-template-columns: 1fr 1fr; }
+
+  .news-grid { grid-template-columns: 1fr; }
+  .news-featured { height: 360px; }
+  .news-item-image { width: 140px; min-height: 140px; }
+
+  .global-stats { grid-template-columns: 1fr; gap: 24px; }
+
+  .footer .container {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 38px; letter-spacing: -2px; }
+  .section-title { font-size: 32px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .stat-number { font-size: 32px; }
+  .about-card { padding: 32px 24px; }
+}
+
+/* ─── LAZY IMAGE ─── */
+img[data-src] { opacity: 0; transition: opacity .6s; }
+img[data-src].loaded { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo">WUXIN<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-text">
+      <div class="hero-label">Wuxin Smart Group</div>
+      <h1 class="hero-title">Engineering<br>Excellence</h1>
+      <p class="hero-desc">Pioneering intelligent construction machinery and infrastructure solutions across six continents since 2005.</p>
+      <a href="#solutions" class="btn-primary">
+        Explore Solutions
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="hero-image">
+      <img data-src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80" alt="Construction site at sunset">
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stat-item" data-aos="fade">
+      <div class="stat-number"><span class="count" data-target="36000">0</span><span class="suffix">+</span></div>
+      <div class="stat-label">Production Facility sqm</div>
+    </div>
+    <div class="stat-item" data-aos="fade" data-aos-delay="100">
+      <div class="stat-number"><span class="count" data-target="600">0</span><span class="suffix">+</span></div>
+      <div class="stat-label">Employees</div>
+    </div>
+    <div class="stat-item" data-aos="fade" data-aos-delay="200">
+      <div class="stat-number"><span class="count" data-target="353">0</span></div>
+      <div class="stat-label">Patents</div>
+    </div>
+    <div class="stat-item" data-aos="fade" data-aos-delay="300">
+      <div class="stat-number"><span class="count" data-target="6000">0</span><span class="suffix">+</span></div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image-wrap" data-aos="fade">
+    <img data-src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80" alt="Aerial view of construction project">
+  </div>
+  <div class="about-card" data-aos="fade">
+    <h2>Building Tomorrow's Infrastructure</h2>
+    <p>Wuxin Smart Group (五新智能集团) is a leading engineering machinery conglomerate specializing in the design, manufacture, and deployment of advanced infrastructure equipment. From tunnel lining systems to port cranes, our integrated solutions power critical projects worldwide.</p>
+    <p class="muted">Headquartered in China with operations spanning Asia, Africa, South America, and the Middle East, we combine decades of engineering expertise with intelligent manufacturing to deliver precision-built machinery for the world's most demanding environments.</p>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="solutions" id="solutions">
+  <div class="container">
+    <div class="section-header" data-aos="fade">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Industry Solutions</h2>
+    </div>
+
+    <div class="solution-row" data-aos="fade">
+      <div class="solution-image">
+        <img data-src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=900&q=80" alt="Highway construction">
+      </div>
+      <div class="solution-content">
+        <div class="solution-number">01</div>
+        <h3>Transportation Infrastructure</h3>
+        <p>Comprehensive formwork and support systems for highway bridges, railway tunnels, and urban transit networks. Engineered for speed, safety, and repeatable precision.</p>
+        <a href="#" class="link-arrow">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="solution-row" data-aos="fade">
+      <div class="solution-image">
+        <img data-src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=900&q=80" alt="Wind energy farm">
+      </div>
+      <div class="solution-content">
+        <div class="solution-number">02</div>
+        <h3>Energy Infrastructure</h3>
+        <p>Specialized equipment for hydropower, wind, and thermal energy construction including dam formwork, turbine installation rigs, and high-altitude scaffolding systems.</p>
+        <a href="#" class="link-arrow">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="solution-row" data-aos="fade">
+      <div class="solution-image">
+        <img data-src="https://images.unsplash.com/photo-1578319439584-104c94d37305?w=900&q=80" alt="Mining operations">
+      </div>
+      <div class="solution-content">
+        <div class="solution-number">03</div>
+        <h3>Mining</h3>
+        <p>Heavy-duty drilling rigs, tunnel boring support systems, and ore handling equipment designed for extreme underground and open-pit mining environments.</p>
+        <a href="#" class="link-arrow">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="solution-row" data-aos="fade">
+      <div class="solution-image">
+        <img data-src="https://images.unsplash.com/photo-1494412574643-ff11b0a5eb19?w=900&q=80" alt="Port cranes">
+      </div>
+      <div class="solution-content">
+        <div class="solution-number">04</div>
+        <h3>Port & Logistics</h3>
+        <p>Gantry cranes, container handling systems, and automated port machinery that streamline cargo operations for the world's busiest shipping terminals.</p>
+        <a href="#" class="link-arrow">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="solution-row" data-aos="fade">
+      <div class="solution-image">
+        <img data-src="https://images.unsplash.com/photo-1590649917260-07b7e21399c0?w=900&q=80" alt="Industrial construction">
+      </div>
+      <div class="solution-content">
+        <div class="solution-number">05</div>
+        <h3>Industrial Building</h3>
+        <p>Climbing formwork, scaffolding, and modular construction systems for high-rise, industrial, and commercial building projects of any scale.</p>
+        <a href="#" class="link-arrow">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-header" data-aos="fade">
+      <div class="section-label">Our Equipment</div>
+      <h2 class="section-title">Product Portfolio</h2>
+    </div>
+    <div class="products-grid">
+      <div class="product-card" data-aos="fade" data-aos-delay="0">
+        <div class="product-card-image">
+          <img data-src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80" alt="Tunnel Lining Trolley">
+        </div>
+        <div class="product-card-label">Tunnel Lining Trolleys</div>
+      </div>
+      <div class="product-card" data-aos="fade" data-aos-delay="50">
+        <div class="product-card-image">
+          <img data-src="https://images.unsplash.com/photo-1590649917260-07b7e21399c0?w=600&q=80" alt="Bridge Formwork">
+        </div>
+        <div class="product-card-label">Bridge Formwork</div>
+      </div>
+      <div class="product-card" data-aos="fade" data-aos-delay="100">
+        <div class="product-card-image">
+          <img data-src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=600&q=80" alt="Drilling Rig">
+        </div>
+        <div class="product-card-label">Drilling Rigs</div>
+      </div>
+      <div class="product-card" data-aos="fade" data-aos-delay="150">
+        <div class="product-card-image">
+          <img data-src="https://images.unsplash.com/photo-1494412574643-ff11b0a5eb19?w=600&q=80" alt="Port Crane">
+        </div>
+        <div class="product-card-label">Port Cranes</div>
+      </div>
+      <div class="product-card" data-aos="fade" data-aos-delay="200">
+        <div class="product-card-image">
+          <img data-src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Scaffolding">
+        </div>
+        <div class="product-card-label">Scaffolding Systems</div>
+      </div>
+      <div class="product-card" data-aos="fade" data-aos-delay="250">
+        <div class="product-card-image">
+          <img data-src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80" alt="Parts">
+        </div>
+        <div class="product-card-label">Parts & Components</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="container">
+    <div class="section-header" data-aos="fade">
+      <div class="section-label">Latest Updates</div>
+      <h2 class="section-title">News & Insights</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-featured" data-aos="fade">
+        <img data-src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=900&q=80" alt="Featured news">
+        <div class="news-featured-overlay">
+          <div class="news-date">February 2026</div>
+          <h3>Wuxin Delivers Smart Tunnel Lining System for Southeast Asia's Longest Railway Tunnel</h3>
+        </div>
+      </div>
+      <div class="news-stack">
+        <div class="news-item" data-aos="fade" data-aos-delay="100">
+          <div class="news-item-image">
+            <img data-src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=80" alt="News item">
+          </div>
+          <div class="news-item-content">
+            <div class="news-date">January 2026</div>
+            <h4>Annual Revenue Surpasses 2 Billion RMB as International Orders Surge</h4>
+            <p>Strong demand from Middle East and African markets drives record growth in Q4.</p>
+          </div>
+        </div>
+        <div class="news-item" data-aos="fade" data-aos-delay="200">
+          <div class="news-item-image">
+            <img data-src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="News item">
+          </div>
+          <div class="news-item-content">
+            <div class="news-date">December 2025</div>
+            <h4>New R&D Center Opens, Advancing AI-Powered Equipment Monitoring</h4>
+            <p>The facility will house 120 engineers focused on predictive maintenance and automation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<section class="global" id="contact">
+  <div class="container">
+    <div class="section-header" data-aos="fade">
+      <div class="section-label">Worldwide Operations</div>
+      <h2 class="section-title">Global Presence</h2>
+    </div>
+
+    <!-- Simplified world map SVG -->
+    <div class="world-map" data-aos="fade">
+      <svg viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Simplified continent outlines -->
+        <!-- North America -->
+        <path d="M150 120 Q170 80 220 90 Q260 70 280 100 Q300 90 310 110 Q290 130 300 150 Q280 170 260 160 Q240 180 220 170 Q200 190 180 170 Q160 180 150 160 Q140 140 150 120Z" fill="#0F2B4C" opacity="0.12"/>
+        <!-- South America -->
+        <path d="M250 260 Q270 240 290 250 Q300 270 310 290 Q300 330 290 360 Q270 380 260 370 Q240 350 245 320 Q240 290 250 260Z" fill="#0F2B4C" opacity="0.12"/>
+        <!-- Europe -->
+        <path d="M440 100 Q460 80 490 90 Q510 85 520 100 Q530 120 520 140 Q500 150 480 140 Q460 150 440 130 Q435 115 440 100Z" fill="#0F2B4C" opacity="0.12"/>
+        <!-- Africa -->
+        <path d="M460 180 Q490 170 510 185 Q530 200 535 240 Q530 280 520 310 Q500 330 480 320 Q460 300 455 260 Q450 220 460 180Z" fill="#0F2B4C" opacity="0.12"/>
+        <!-- Asia -->
+        <path d="M550 80 Q600 60 660 70 Q720 65 760 90 Q780 110 770 140 Q750 160 720 170 Q680 180 640 170 Q600 175 570 160 Q540 140 540 110 Q545 90 550 80Z" fill="#0F2B4C" opacity="0.12"/>
+        <!-- Australia -->
+        <path d="M720 300 Q750 285 780 290 Q800 300 810 320 Q800 340 780 345 Q760 340 740 335 Q720 325 720 300Z" fill="#0F2B4C" opacity="0.12"/>
+
+        <!-- Location dots with copper color -->
+        <circle cx="660" cy="130" r="6" fill="#C46A2C"/> <!-- China HQ -->
+        <circle cx="660" cy="130" r="12" fill="#C46A2C" opacity="0.2"/>
+        <circle cx="660" cy="130" r="20" fill="#C46A2C" opacity="0.08"/>
+
+        <circle cx="560" cy="195" r="4" fill="#C46A2C" opacity="0.6"/> <!-- Middle East -->
+        <circle cx="490" cy="250" r="4" fill="#C46A2C" opacity="0.6"/> <!-- Africa -->
+        <circle cx="700" cy="160" r="4" fill="#C46A2C" opacity="0.6"/> <!-- SE Asia -->
+        <circle cx="270" cy="300" r="4" fill="#C46A2C" opacity="0.6"/> <!-- South America -->
+        <circle cx="480" cy="120" r="4" fill="#C46A2C" opacity="0.6"/> <!-- Europe -->
+      </svg>
+    </div>
+
+    <div class="global-stats" data-aos="fade">
+      <div class="global-stat">
+        <h4>30+</h4>
+        <p>Countries</p>
+      </div>
+      <div class="global-stat">
+        <h4>6</h4>
+        <p>Continents</p>
+      </div>
+      <div class="global-stat">
+        <h4>12</h4>
+        <p>Regional Offices</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <a href="#" class="footer-logo">WUXIN<span>.</span></a>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 Wuxin Smart Group. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+// ─── AOS Init ───
+AOS.init({
+  duration: 800,
+  once: true,
+  offset: 80,
+  easing: 'ease-out-cubic'
+});
+
+// ─── Navbar scroll ───
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── Mobile nav toggle ───
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// ─── Lazy load images ───
+const lazyImages = document.querySelectorAll('img[data-src]');
+const imageObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      img.src = img.dataset.src;
+      img.onload = () => img.classList.add('loaded');
+      img.removeAttribute('data-src');
+      obs.unobserve(img);
+    }
+  });
+}, { rootMargin: '200px' });
+
+lazyImages.forEach(img => imageObserver.observe(img));
+
+// ─── Count-up animation ───
+const counters = document.querySelectorAll('.count');
+const counterObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const duration = 2000;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        el.textContent = current.toLocaleString();
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target.toLocaleString();
+      }
+
+      requestAnimationFrame(update);
+      obs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+counters.forEach(c => counterObserver.observe(c));
+</script>
+</body>
+</html>

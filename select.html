@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wuxin Smart Group - Visual Direction Selection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',system-ui,sans-serif;background:#0a0e1a;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px}
+    .badge{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E87A1E;margin-bottom:16px}
+    h1{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;text-align:center;margin-bottom:8px;line-height:1.2}
+    .sub{font-size:15px;color:rgba(255,255,255,.5);text-align:center;max-width:500px;margin-bottom:48px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;width:100%}
+    .card{
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;overflow:hidden;transition:all .3s;cursor:pointer;
+      text-decoration:none;color:#fff;
+    }
+    .card:hover{border-color:rgba(232,122,30,.4);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+    .card-preview{height:220px;overflow:hidden;position:relative}
+    .card-preview img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s}
+    .card:hover .card-preview img{transform:scale(1.03)}
+    .card-label{
+      position:absolute;top:12px;left:12px;
+      padding:4px 10px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);
+      border-radius:4px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    }
+    .card-body{padding:20px}
+    .card-body h3{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px}
+    .card-body p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.6}
+    .card-body .arrow{
+      display:inline-flex;align-items:center;gap:5px;
+      margin-top:14px;font-size:12px;font-weight:600;color:#E87A1E;
+    }
+    .footer-note{margin-top:48px;font-size:12px;color:rgba(255,255,255,.25);text-align:center}
+    @media(max-width:768px){
+      .grid{grid-template-columns:1fr}
+      .card-preview{height:180px}
+    }
+  </style>
+</head>
+<body>
+  <div class="badge">Visual Direction Proposal</div>
+  <h1>Wuxin Smart Group</h1>
+  <p class="sub">Three visual directions for the corporate website homepage. Click to preview each direction in full.</p>
+  <div class="grid">
+    <a href="index.html" class="card">
+      <div class="card-preview">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=60" alt="V1 Preview">
+        <div class="card-label">Direction A</div>
+      </div>
+      <div class="card-body">
+        <h3>Corporate Industrial</h3>
+        <p>Classic engineering group aesthetic. White navbar, blue brand color, structured layout. References SANY, Zoomlion, XCMG design patterns.</p>
+        <div class="arrow">View Full Page <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+    <a href="v2.html" class="card">
+      <div class="card-preview">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=60" alt="V2 Preview">
+        <div class="card-label">Direction B</div>
+      </div>
+      <div class="card-body">
+        <h3>Dark Premium</h3>
+        <p>Bold, modern dark theme with electric blue accents and glassmorphism. Tech-forward industrial powerhouse aesthetic.</p>
+        <div class="arrow">View Full Page <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+    <a href="v3.html" class="card">
+      <div class="card-preview">
+        <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=60" alt="V3 Preview">
+        <div class="card-label">Direction C</div>
+      </div>
+      <div class="card-body">
+        <h3>Clean Minimalist</h3>
+        <p>European editorial style with oversized typography, generous whitespace, and photography-forward design. Quiet luxury meets industry.</p>
+        <div class="arrow">View Full Page <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+  </div>
+  <p class="footer-note">Prepared by Pop Up Limited for Wuxin Smart Group &middot; Visual Reference Only</p>
+</body>
+</html>
